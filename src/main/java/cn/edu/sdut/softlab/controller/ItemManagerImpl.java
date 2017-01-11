@@ -7,6 +7,7 @@ package cn.edu.sdut.softlab.controller;
 import cn.edu.sdut.softlab.model.Item;
 import cn.edu.sdut.softlab.service.ItemFacade;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ public class ItemManagerImpl implements ItemManager {
 	@Inject
 	private UserTransaction utx;
 
-	private Item newItem = new Item();
+	private Item newItem;
 
 	//Item 的 set/get 方法
 	public Item getNewItem() {
@@ -58,6 +59,7 @@ public class ItemManagerImpl implements ItemManager {
 	public String addItem() throws Exception {
 		try {
 			utx.begin();
+			newItem.setDateBought(new Date());
 			itemService.create(newItem);
 			logger.log(Level.INFO, "Added {0}", newItem);
 			return "/items.xhtml?faces-redirect=true";
@@ -65,6 +67,5 @@ public class ItemManagerImpl implements ItemManager {
 			utx.commit();
 		}
 	}
-
 
 }

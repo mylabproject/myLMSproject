@@ -19,11 +19,6 @@
 package cn.edu.sdut.softlab.service;
 
 import cn.edu.sdut.softlab.model.Item;
-import cn.edu.sdut.softlab.model.Stuff;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
@@ -36,11 +31,6 @@ public class ItemFacade extends AbstractFacade<Item> {
 	}
 
 
-	public Item findByUsernameAndPassword(String username, String password) {
-		Map<String, Object> parameters = new HashMap<>(0);
-		parameters.put("username", username);
-		parameters.put("password", password);
-		return findSingleByNamedQuery("Stuff.findByUsernameAndPassword", parameters, Stuff.class).get();
-	}
+
 }
 

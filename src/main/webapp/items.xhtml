@@ -8,14 +8,14 @@
         <ui:define name="content">
             <h:messages />
             <h1>Items:</h1>
-            <h:dataTable value="#{Item}" var="var_item">
+            <h:dataTable value="#{items}" var="var_item">
                 <h:column>
                     <f:facet name="header">
-                        Item_name
+                        name
                     </f:facet>
-                    <h:outputText value="#{var_item.item_name}" />
+                    <h:outputText value="#{var_item.name}" />
                 </h:column>
-                <h:column>
+<!--                 <h:column>
                     <f:facet name="header">
                         code
                     </f:facet>
@@ -25,26 +25,26 @@
                     <f:facet name="header">
                         num_total
                     </f:facet>
-                    <h:outputText value="#{var_item.num_total}" />
+                    <h:outputText value="#{var_item.numTotal}" />
                 </h:column>
-                <h:column>
+ --><!--                 <h:column>
                     <f:facet name="header">
                         dateBought
                     </f:facet>
                     <h:outputText value="#{var_item.dateBought}" />
-                </h:column>
-                <h:column>
+                </h:column> -->
+                 <h:column>
                     <f:facet name="header">
                         category_id
                     </f:facet>
-                    <h:outputText value="#{var_item.category_id}" />
+                    <h:outputText value="#{var_item.category}" />
                 </h:column>
-                <h:column>
+<!--                 <h:column>
                     <f:facet name="header">
                         status
                     </f:facet>
                     <h:outputText value="#{var_item.status}" />
-                </h:column>
+                </h:column> -->
 
             </h:dataTable>
             
@@ -56,31 +56,31 @@
             <h:form>
                 <table>
                     <tr>
-                        <td>Item's name</td>
+                        <td>name</td>
                         <td><h:inputText value="#{itemManager.newItem.name}"/></td>
                     </tr>
-
+<!-- 
                     <tr>
-                        <td>item's code</td>
+                        <td>code</td>
                         <td><h:inputText value="#{itemManager.newItem.code}"/></td>
                     </tr>
                     <tr>
-                        <td>item's num_total</td>
+                        <td>num_total</td>
                         <td><h:inputText value="#{itemManager.newItem.numTotal}"/></td>
                     </tr>
-                    <tr>
-                        <td>item's dateBought</td>
+ --><!--                     <tr>
+                        <td>dateBought</td>
                         <td><h:inputText value="#{itemManager.newItem.dateBought}"/></td>
-                    </tr>
-                    <tr>
-                        <td>item's category_id</td>
+                    </tr> -->
+<!--                     <tr>
+                        <td>category_id</td>
                         <td><h:inputText value="#{itemManager.newItem.category}"/></td>
-                    </tr>
-                    <tr>
-                        <td>item's status</td>
+                    </tr> -->
+<!--                     <tr>
+                        <td>status</td>
                         <td><h:inputText value="#{itemManager.newItem.status}"/></td>
                     </tr>                    
-                                                                    
+ -->                                                                    
                     <tr>
                         <td></td>
                         <td><h:commandButton action="#{itemManager.addItem}" value="Add Item" /></td>
