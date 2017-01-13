@@ -47,6 +47,7 @@
                 <jpa:bv/>
                 <jpa:column name="name" unique="false" nullable="true" insertable="true" updatable="true" table="category" length="128" precision="0" scale="0"/>
             </jpa:basic>
+                
             <jpa:one-to-many orp="false" own="false" collection-type="java.util.List" connected-entity-id="_148005676541964" connected-attribute-id="_148005676542074" visibile="true" name="itemCollection" id="_148005676542078"/>
             <jpa:id attribute-type="Integer" visibile="true" name="id" id="_148005676542076">
                 <jpa:bv/>

@@ -1,7 +1,3 @@
-/*
- * @author gaoyisheng
- */
-
 package cn.edu.sdut.softlab.controller;
 
 import cn.edu.sdut.softlab.model.Item;
@@ -19,6 +15,11 @@ import javax.inject.Named;
 
 import javax.transaction.UserTransaction;
 
+
+/**
+ *   物品管理器.
+ *  @author gaoyisheng
+ */
 @Named("itemManager")
 @RequestScoped
 public class ItemManagerImpl implements ItemManager {
@@ -31,7 +32,12 @@ public class ItemManagerImpl implements ItemManager {
 	@Inject
 	private UserTransaction utx;
 
-	private Item newItem;
+	private Item newItem = new Item();
+							    //不能在此处 直接new()是因为，
+							   //boughtTime 这个属性 不是在 页面初始化 的时候，初始化。而是
+						        //应该放在Add 这个button 的单击事件里。
+	
+								//上面分析有误， 。。。。。so ?
 
 	//Item 的 set/get 方法
 	public Item getNewItem() {

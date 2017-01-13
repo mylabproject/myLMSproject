@@ -26,8 +26,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -55,6 +53,12 @@ public class Category implements Serializable {
 	@OneToMany(mappedBy = "category")
 	private Set<Item> itemSet;
 
+//	//自己添加的(parentId)字段  2017-1-11 
+//	@Column(name = "parentId")
+//	private String parentId;
+//	//然而并不能映射过去。。。暂时。
+//	
+	
 	public Category() {
 	}
 
@@ -89,7 +93,7 @@ public class Category implements Serializable {
 
 	@Override
 	public String toString() {
-		return "cn.edu.sdut.softlab.model.Category[ id=" + id + " ]";
+		return "Category[ id=" + id + " ]";
 	}
 
 }

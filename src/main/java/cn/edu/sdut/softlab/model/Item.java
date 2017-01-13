@@ -120,11 +120,14 @@ public class Item implements Serializable {
 	}
 
 	public Date getDateBought() {
-		return new Date(dateBought.getTime());
+		
+		return new Date();
+		//return new Date(dateBought.getTime());
 	}
 
 	public void setDateBought(Date dateBought) {
 		this.dateBought = new Date(dateBought.getTime());
+		
 	}
 
 	public Category getCategory() {
@@ -146,7 +149,7 @@ public class Item implements Serializable {
 
 	@Override
 	public String toString() {
-		return "cn.edu.sdut.softlab.model.Item[ id=" + id + " ]";
+		return "Item[ id=" + id + " ]";
 	}
 
 }
