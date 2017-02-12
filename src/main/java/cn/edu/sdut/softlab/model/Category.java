@@ -20,12 +20,15 @@ package cn.edu.sdut.softlab.model;
 
 import java.io.Serializable;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -36,64 +39,63 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Su Baochen
  */
+@ManagedBean(name ="Category")
 @Entity
 @Table(name = "category")
 @XmlRootElement
+@NamedQueries({
+  @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c"),
+  @NamedQuery(name = "Category.findById", query = "SELECT c FROM Category c WHERE c.id = :id"),
+  @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")})
 public class Category implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "id")
-	private Integer id;
-	@Size(max = 128)
-	@Column(name = "name")
-	private String name;
-	@OneToMany(mappedBy = "category")
-	private Set<Item> itemSet;
+  private static final long serialVersionUID = 1L;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Basic(optional = false)
+  @Column(name = "id")
+  private Integer id;
+  @Size(max = 128)
+  @Column(name = "name")
+  private String name;
+  @OneToMany(mappedBy = "category")
+  private Set<Item> itemSet;
 
-//	//自己添加的(parentId)字段  2017-1-11 
-//	@Column(name = "parentId")
-//	private String parentId;
-//	//然而并不能映射过去。。。暂时。
-//	
-	
-	public Category() {
-	}
+  public Category() {
+  }
 
-	public Category(Integer id) {
-		this.id = id;
-	}
+  public Category(Integer id) {
+    this.id = id;
+  }
 
-	public Integer getId() {
-		return id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	@XmlTransient
-	public Set<Item> getItemSet() {
-		return itemSet;
-	}
+  @XmlTransient
+  public Set<Item> getItemSet() {
+    return itemSet;
+  }
 
-	public void setItemSet(Set<Item> itemSet) {
-		this.itemSet = itemSet;
-	}
+  public void setItemSet(Set<Item> itemSet) {
+    this.itemSet = itemSet;
+  }
 
-	@Override
-	public String toString() {
-		return "Category[ id=" + id + " ]";
-	}
-
+  @Override
+  public String toString() {
+    return "cn.edu.sdut.softlab.model.Category[ id=" + id + " ]";
+  }
+  
 }
