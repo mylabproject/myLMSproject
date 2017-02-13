@@ -4,6 +4,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+<!-- <h:head>
+
+
+<style>
+.city {
+float: left;
+margin: 5px;
+padding: 15px;
+width: 300px;
+height: 300px;
+border: 1px solid black;
+} 
+</style>
+
+</h:head>  -->
+
+<body> 
+
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <h:messages />
@@ -28,8 +46,19 @@
                     <h:outputText value="#{u.password}" />
                 </h:column>
             </h:dataTable>
+            
+          <!--   <div class="city">
+             -->
+            
             <h1>Add user</h1>
+            
+            
+            
+            
             <h:form>
+            
+            
+            
                 <table>
                     <tr>
                         <td>Username</td>
@@ -49,7 +78,16 @@
                         <td><h:commandButton action="#{userManager.addStuff}" value="Add User" /></td>
                     </tr>
                 </table>
+                
+               
+                
             </h:form>
+<!--                </div>  -->            
+          
         </ui:define>
     </ui:composition>
+    
+    
+    </body> 
+    
 </html>
