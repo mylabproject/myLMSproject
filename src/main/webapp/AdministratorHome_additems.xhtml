@@ -69,33 +69,46 @@
 				</select>
 				
 				
-				<!-- 添加用户的 一系列...  -->
-				                <table>
+				<!-- 添加物品的 一系列...  -->
+			
+            <h1>Add item:</h1>
+            <h:form>
+                <table>
                     <tr>
-                        <td>Username</td>
-                        <td><h:inputText value="#{userManager.newStuff.username}"/></td>
+                        <td>name</td>
+                        <td><h:inputText value="#{itemManager.newItem.name}"/></td>
+                    </tr>
+ 
+                    <tr>
+                        <td>code</td>
+                        <td><h:inputText value="#{itemManager.newItem.code}"/></td>
+                    </tr>
+                    <tr>
+                        <td>num_total</td>
+                        <td><h:inputText value="#{itemManager.newItem.numTotal}"/></td>
                     </tr>
 
-                    <tr>
-                        <td>Password</td>
-                        <td><h:inputText value="#{userManager.newStuff.password}"/></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><h:inputText value="#{userManager.newStuff.email}"/></td>
-                    </tr>                            
+                     <tr>
+                        <td>category_id</td>
+                        <td><h:inputText value="#{itemManager.newItem.category}"/></td>
+                    </tr> 
+                     <tr>
+                        <td>status</td>
+                        <td><h:inputText value="#{itemManager.newItem.status}"/></td>
+                    </tr>                    
+                                                                    
                     <tr>
                         <td></td>
-                        <td><h:commandButton action="#{userManager.addStuff}" value="Add User1" /></td>
+                        <td><h:commandButton action="#{itemManager.addItem}" value="Add Item" /></td>
                     </tr>
                 </table>
+            </h:form>
 				
 				
 				
 				
 				
-				
-									<h:messages />
+		<!-- 							<h:messages />
 					<h1>Users</h1>
 					<h:dataTable value="#{stuffs}" var="u">
 						<h:column>
@@ -116,8 +129,44 @@
                     </f:facet>
 							<h:outputText value="#{u.password}" />
 						</h:column>
-					</h:dataTable>
+					</h:dataTable> -->
 
+			<h1>Items:</h1>
+            <h:dataTable value="#{items}" var="var_item">
+                <h:column>
+                    <f:facet name="header">
+                        name
+                    </f:facet>
+                    <h:outputText value="#{var_item.name}" />
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">
+                        code
+                    </f:facet>
+                    <h:outputText value="#{var_item.code}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        num_total
+                    </f:facet>
+                    <h:outputText value="#{var_item.numTotal}" />
+                </h:column>
+
+                 <h:column>
+                    <f:facet name="header">
+                        category_id
+                    </f:facet>
+                    <h:outputText value="#{var_item.category}" />
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">
+                        status
+                    </f:facet>
+                    <h:outputText value="#{var_item.status}" />
+                </h:column> 
+
+            </h:dataTable>
+            
 				
 				
 				
