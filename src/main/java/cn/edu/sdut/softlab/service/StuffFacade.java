@@ -34,6 +34,35 @@ public class StuffFacade extends AbstractFacade<Stuff> {
 		super(Stuff.class);
 	}
 
+	/**
+	 * 同findByUsernameAndPassword()理
+	 * 2017-02-14
+	 */
+	public Stuff findByName(String username) {
+		Map<String, Object> parameters = new HashMap<>(0);
+		parameters.put("username", username);
+		return findSingleByNamedQuery("Stuff.findByUsername", parameters, Stuff.class).get();
+	}
+	
+	/**
+	 * 同findByUsernameAndPassword()理
+	 * 2017-02-14
+	 * 
+	 * 
+	 * 以后 找回密码用：mail + pwd
+	 */
+	public Stuff findByMail(String mail) {
+		Map<String, Object> parameters = new HashMap<>(0);
+		parameters.put("mail", mail);
+		
+		/*
+		 * 待 修改完善
+		 * findSingleByNamedQuery => findSingleByMailQuery
+		 */
+		return findSingleByNamedQuery("Stuff.findByUsername", parameters, Stuff.class).get();
+	}
+	
+
 	public Stuff findByUsernameAndPassword(String username, String password) {
 		Map<String, Object> parameters = new HashMap<>(0);
 		parameters.put("username", username);

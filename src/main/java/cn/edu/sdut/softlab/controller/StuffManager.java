@@ -40,4 +40,13 @@ public interface StuffManager {
 	 */
 	String addStuff() throws Exception;
 
+	
+	/**
+	 * 删除用户.
+	 *
+	 * @author gaoyisheng 2017-02-14
+	 * 	@throws Exception
+	 */
+	public String deleteStuff() throws Exception;
+	
 }

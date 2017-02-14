@@ -27,9 +27,10 @@ import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
 
 @Named("userManager")
@@ -42,8 +43,20 @@ public class StuffManagerImpl implements StuffManager {
 	StuffFacade userService;
 
 	@Inject
+	Credentials credentials;
+	
+	@Inject
 	private UserTransaction utx;
 
+	@Inject
+	EntityManager em;
+	
+	@Inject
+	FacesContext facesContext;
+	
+	private Stuff currentstuff = null;
+	
+	
 	private Stuff newStuff = new Stuff();
 
 	public Stuff getNewStuff() {
@@ -73,9 +86,29 @@ public class StuffManagerImpl implements StuffManager {
 			utx.begin();
 			userService.create(newStuff);
 			logger.log(Level.INFO, "Added {0}", newStuff);
-			return "/users.xhtml?faces-redirect=true";
+			return "/AdministratorHome_adduser.xhtml?faces-redirect=true";
 		} finally {
 			utx.commit();
 		}
 	}
+
+	@Override
+	public String deleteStuff() throws Exception {
+
+		Stuff temporstuff = userService.findByName(credentials.getUsername());
+		if (temporstuff != null) {
+			currentstuff = temporstuff;
+		}/*else{
+			return facesContext.addMessage(null, new FacesMessage("Not found , delete failure " );
+		}*/
+		
+		utx.begin();
+		userService.remove(currentstuff);
+		
+		utx.commit();
+		logger.log(Level.INFO, "Added {0}");
+
+		return "/AdministratorHome_deleteuser.xhtml?faces-redirect=true";
+	}
+
 }

@@ -24,9 +24,6 @@ background:#cccccc;
 </style>
 
 
-
-
-
 </h:head>
 
 <!-- <ui:define name="content"> -->
@@ -50,18 +47,18 @@ background:#cccccc;
 				
        				 <tr>
                         <td></td>
-                        <td><h:commandButton value="Add User" /></td>
+                        <td><h:commandButton value="Add User123" /></td>
                     </tr>				
 							
 				
        				 <tr>
                         <td></td>
-                        <td><h:commandButton value="Add Category" /></td>
+                        <td><h:commandButton value="Add Category123" /></td>
                     </tr>					
 
        				 <tr>
                         <td></td>
-                        <td><h:commandButton value="Add Item" /></td>
+                        <td><h:commandButton value="Add Item123" /></td>
                     </tr>	
 
 				</table>
@@ -83,7 +80,7 @@ background:#cccccc;
 					<option value="shandong">山东</option>
 				</select>
 				
-				
+				<h:form>
 				<!-- 添加用户的 一系列...  -->
 				<table>
                     <tr>
@@ -98,16 +95,15 @@ background:#cccccc;
                     <tr>
                         <td>Email</td>
                         <td><h:inputText value="#{userManager.newStuff.email}"/></td>
-                    </tr>                            
+                    </tr>
                     <tr>
                         <td></td>
-                        <td><h:commandButton action="#{userManager.addStuff}" value="Add User1" /></td>
+                        <td><h:commandButton action="#{userManager.addStuff}" value="Add User" /></td>
                     </tr>
                 </table>
-				
-				
-				
-				
+				</h:form>
+
+
 				<div class="city">
 				
 					<h:messages />
