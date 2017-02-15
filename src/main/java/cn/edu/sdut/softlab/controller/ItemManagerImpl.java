@@ -11,7 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
 
 /**
@@ -31,6 +31,9 @@ public class ItemManagerImpl implements ItemManager {
 	@Inject
 	private UserTransaction utx;
 
+	@Inject
+	EntityManager em;
+	
 	private Item newItem = new Item();
 	// 不能在此处 直接new()是因为，
 	// boughtTime 这个属性 不是在 页面初始化 的时候，初始化。而是
@@ -39,6 +42,10 @@ public class ItemManagerImpl implements ItemManager {
 	// 上面分析有误， 。。。。。so ?
 
 	// Item 的 set/get 方法
+	
+	
+	
+	
 	public Item getNewItem() {
 		return newItem;
 	}
@@ -73,8 +80,10 @@ public class ItemManagerImpl implements ItemManager {
 		}
 	}
 
+	/*	@Inject Item currentitem;     ????    */
+	
 	/**
-	 * 1.从前台获取 name 
+	 * 1.从前台获取 itemname   ,and( num , timestamp , borrower, 存记录用)
 	 * 2.到数据库中查询 
 	 * 3.修改其中 totol字段（入库+=n 出库-=n， 后期交与不同的sevice负责，松耦合提取出来 ） 
 	 * 4.保存记录到itme_account表，（创建一个新的字段，为以后查出入库明细 用）
@@ -87,7 +96,33 @@ public class ItemManagerImpl implements ItemManager {
 		utx.begin();
 		//
 
-		return " ";
+		Item currentItem = itemService.findByName(this.getNewItem().getName());
+		em.clear();
+		
+		//检查 空，   后期提出到 check
+		if(currentItem != null){
+			
+			//暂时 设置为 1,  n应为 绑定的参数。
+			int n = 1; 
+			if((currentItem.getNumTotal() - n ) >= 0){
+					
+				currentItem.setNumTotal(currentItem.getNumTotal() - n);
+				
+				em.merge(currentItem);
+				utx.commit();
+				
+				return "/AdministratorHome_edititem.xhtml?faces-redirect=true";
+				
+			}else{
+				
+				em.close();
+				return "/error.xhtml";
+				//不能借到负数吧。
+			}
+		}
+		
+		em.close();
+		return "error.xthml";
 	}
 
 }
