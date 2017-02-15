@@ -34,6 +34,16 @@ public class ItemManagerImpl implements ItemManager {
 	@Inject
 	EntityManager em;
 	
+	private int temporNum;
+
+	public int getTemporNum() {
+		return temporNum;
+	}
+
+	public void setTemporNum(int temporNum) {
+		this.temporNum = temporNum;
+	}
+
 	private Item newItem = new Item();
 	// 不能在此处 直接new()是因为，
 	// boughtTime 这个属性 不是在 页面初始化 的时候，初始化。而是
@@ -42,10 +52,7 @@ public class ItemManagerImpl implements ItemManager {
 	// 上面分析有误， 。。。。。so ?
 
 	// Item 的 set/get 方法
-	
-	
-	
-	
+
 	public Item getNewItem() {
 		return newItem;
 	}
@@ -80,12 +87,11 @@ public class ItemManagerImpl implements ItemManager {
 		}
 	}
 
-	/*	@Inject Item currentitem;     ????    */
-	
+	/* @Inject Item currentitem; ???? */
+
 	/**
-	 * 1.从前台获取 itemname   ,and( num , timestamp , borrower, 存记录用)
-	 * 2.到数据库中查询 
-	 * 3.修改其中 totol字段（入库+=n 出库-=n， 后期交与不同的sevice负责，松耦合提取出来 ） 
+	 * 1.从前台获取 itemname ,and( num , timestamp , borrower, 存记录用) 2.到数据库中查询 3.修改其中
+	 * totol字段（入库+=n 出库-=n， 后期交与不同的sevice负责，松耦合提取出来 ）
 	 * 4.保存记录到itme_account表，（创建一个新的字段，为以后查出入库明细 用）
 	 *
 	 * @return
@@ -98,31 +104,36 @@ public class ItemManagerImpl implements ItemManager {
 
 		Item currentItem = itemService.findByName(this.getNewItem().getName());
 		em.clear();
-		
-		//检查 空，   后期提出到 check
-		if(currentItem != null){
+
+		// 检查 空， 后期提出到 check
+		if (currentItem != null) {
+
+/*			// 暂时 设置为 1, n应为 绑定的参数。
+			int n = 1;*/
 			
-			//暂时 设置为 1,  n应为 绑定的参数。
-			int n = 1; 
-			if((currentItem.getNumTotal() - n ) >= 0){
-					
-				currentItem.setNumTotal(currentItem.getNumTotal() - n);
-				
+			if ((currentItem.getNumTotal() - temporNum) >= 0) {
+
+				currentItem.setNumTotal(currentItem.getNumTotal() - temporNum);
+
+				// 倘若都借出去了，将 状态 status 置为不可借: false
+				if ((currentItem.getNumTotal() - temporNum) == 0) {
+					currentItem.setStatus("false");
+				}
+
 				em.merge(currentItem);
 				utx.commit();
-				
+
 				return "/AdministratorHome_edititem.xhtml?faces-redirect=true";
-				
-			}else{
-				
-				em.close();
-				return "/error.xhtml";
-				//不能借到负数吧。
+
+			} else {
+
+				return "/error.xhtml?faces-redirect=true";
+				// 不能借到负数吧。
 			}
 		}
-		
+
 		em.close();
-		return "error.xthml";
+		return "error.xthml?faces-redirect=true";
 	}
 
 }
