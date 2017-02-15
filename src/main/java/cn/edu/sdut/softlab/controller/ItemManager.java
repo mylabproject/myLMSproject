@@ -26,4 +26,10 @@ public interface ItemManager {
 	 */
 	String addItem() throws Exception;
 
+	/**
+	 * @return
+	 * @throws Exception
+	 */
+	String deleteItem() throws Exception;
+
 }

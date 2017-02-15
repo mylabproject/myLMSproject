@@ -4,9 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.prime.com.tr/ui">
-<h:head>
 
-<style>
+<h:head>
+	<style>
 .city {
 	float: center;
 	margin: 5px;
@@ -17,10 +17,7 @@
 	background: #CCFFFF;
 }
 </style>
-
-
 </h:head>
-
 <body>
 	<center>
 		<div id="wapper">
@@ -69,6 +66,10 @@
 
 
 
+
+
+
+
 				<div id="centercentent">网站主题内容</div>
 				选择地址：<select name="address" size="1">
 					<option value="shanghai">上海</option>
@@ -77,23 +78,27 @@
 				</select>
 
 
+				<!-- 物品入库...  -->
 
+				<h:message />
+
+				<h1>Item in:</h1>
 				<h:form>
-					<!--  物品出库 ...  -->
 					<table>
 						<tr>
-							<td>Itemname:</td>
+							<td>name</td>
 							<td><h:inputText value="#{itemManager.newItem.name}" /></td>
 						</tr>
+
 						<tr>
-							<td>num :</td>
+							<td>num:</td>
 							<td><h:inputText value="#{itemManager.temporNum}" /></td>
 						</tr>
-						
+
 						<tr>
 							<td></td>
-							<td><h:commandButton action="#{itemManager.itemOut}"
-									value="Item out " /></td>
+							<td><h:commandButton action="#{itemManager.itemIn}"
+									value="Item In" /></td>
 						</tr>
 					</table>
 				</h:form>
@@ -101,48 +106,56 @@
 
 
 
-			<div class="city">
-			<h:message/>
-				<h1>Items:</h1>
-				<h:dataTable value="#{items}" var="var_item">
-					<h:column>
-						<f:facet name="header">
+
+
+				<div class="city">
+				<h:message/>
+					<h1>Items:</h1>
+					<h:dataTable value="#{items}" var="var_item">
+						<h:column>
+							<f:facet name="header">
                         name
                     </f:facet>
-						<h:outputText value="#{var_item.name}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
+							<h:outputText value="#{var_item.name}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
                         code
                     </f:facet>
-						<h:outputText value="#{var_item.code}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
+							<h:outputText value="#{var_item.code}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
                         dateBought
                     </f:facet>
-						<p:calendar value="#{var_item.dateBought}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
+							<p:calendar value="#{var_item.dateBought}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
                         num_total
                     </f:facet>
-						<h:outputText value="#{var_item.numTotal}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
+							<h:outputText value="#{var_item.numTotal}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
                         category_id
                     </f:facet>
-						<h:outputText value="#{var_item.category}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
+							<h:outputText value="#{var_item.category}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
                         status
                     </f:facet>
-						<h:outputText value="#{var_item.status}" />
-					</h:column>
-				</h:dataTable>
-		</div>
+							<h:outputText value="#{var_item.status}" />
+						</h:column>
+
+					</h:dataTable>
+				</div>
+
+
 
 
 				<!-- 	<div id="rightsider">网站右边导航栏</div> -->
@@ -153,8 +166,5 @@
 			</div>
 		</div>
 	</center>
-
-
-
 </body>
 </html>

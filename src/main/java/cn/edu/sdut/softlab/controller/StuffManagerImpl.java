@@ -54,7 +54,7 @@ public class StuffManagerImpl implements StuffManager {
 	@Inject
 	FacesContext facesContext;
 	
-	private Stuff currentstuff = null;
+/*	private Stuff currentstuff = null;*/
 	
 	
 	private Stuff newStuff = new Stuff();
@@ -97,18 +97,22 @@ public class StuffManagerImpl implements StuffManager {
 
 		Stuff temporstuff = userService.findByName(credentials.getUsername());
 		if (temporstuff != null) {
-			currentstuff = temporstuff;
-		}/*else{
-			return facesContext.addMessage(null, new FacesMessage("Not found , delete failure " );
-		}*/
+/*			currentstuff = temporstuff;*/
 		
-		utx.begin();
-		userService.remove(currentstuff);
+			utx.begin();
+			userService.remove(temporstuff);
+			
+			utx.commit();
+			logger.log(Level.INFO, "Added {0}");
 		
-		utx.commit();
-		logger.log(Level.INFO, "Added {0}");
+			return "/AdministratorHome_deleteuser.xhtml?faces-redirect=true";
+		
+		}else{
 
-		return "/AdministratorHome_deleteuser.xhtml?faces-redirect=true";
+			return "error.xhtml?faces-redirect=true";
+		
+		}
+		
 	}
 
 }
