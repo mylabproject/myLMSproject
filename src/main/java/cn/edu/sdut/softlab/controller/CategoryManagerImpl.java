@@ -23,6 +23,8 @@ import cn.edu.sdut.softlab.service.CategoryFacade;
  *   类管理器.
  *  @author gaoyisheng
  */
+@Named("categoryManager")
+@RequestScoped
 public class CategoryManagerImpl implements CategoryManager {
 
 
@@ -34,6 +36,8 @@ public class CategoryManagerImpl implements CategoryManager {
 	@Inject
 	private UserTransaction utx;
 
+/*	private List<Category> categories;*/
+	
 	private Category newCategory = new Category();
 
 	public Category getNewCategory() {

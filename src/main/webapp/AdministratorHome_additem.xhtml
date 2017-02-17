@@ -89,8 +89,14 @@
 
                      <tr>
                         <td>category_name</td>
-                        <td><h:inputText value="#{itemManager.newItem.category.name}" id="category_name"/>
+                        <td><p:selectOneMenu value="#{itemManager.newItem.category}" id="category_name" var="c">
+                        					<!-- 此处的 selectItem 是一个标签。注意 -->
+                        				<f:selectItem itemLabel="Select One" itemValue="" />
+                        					<f:selectItems value="#{itemManager.}"/>
+                        			
+                        			
                         			<f:converter converterId="myCategoryConverter" for="category_name"/>
+                        	   </p:selectOneMenu>
                         </td>
                     </tr> 
                      <tr>

@@ -20,6 +20,7 @@ package cn.edu.sdut.softlab.service;
 
 import cn.edu.sdut.softlab.model.Category;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
@@ -37,6 +38,10 @@ public class CategoryFacade extends AbstractFacade<Category> {
 		Map<String, Object> parameters = new HashMap<>(0);
 		parameters.put("name", name);
 		return findSingleByNamedQuery("Category.findByName", parameters, Category.class).get();
+	}
+	
+	public List<Category> findAllCategory(){
+		return findAll();
 	}
 
 }

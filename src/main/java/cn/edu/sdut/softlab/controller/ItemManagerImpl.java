@@ -113,20 +113,6 @@ public class ItemManagerImpl implements ItemManager {
 		}
 	}
 		
-		/*try {
-			utx.begin();
-			 newItem.setDateBought(new Date()); 
-			itemService.create(newItem);
-			logger.log(Level.INFO, "Added {0}", newItem);
-			return "/AdministratorHome_additems.xhtml?faces-redirect=true";
-		} finally {
-			utx.commit();
-		}*/
-
-	
-	
-
-	/* @Inject Item currentitem; 行不通 。???? */
 
 	/**
 	 * 1.从前台获取 itemname ,and( num , timestamp , borrower, 存记录用) 
