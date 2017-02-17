@@ -57,10 +57,6 @@
 
 
 
-
-
-
-
 				<div id="centercentent">
 					网站主题内容
 
@@ -68,12 +64,7 @@
 
 
 				</div>
-				选择地址：<select name="address" size="1">
-					<option value="shanghai">上海</option>
-					<option selected="selected" value="beijing">北京</option>
-					<option value="shandong">山东</option>
-				</select>
-				
+			
 				
 				<!-- 添加物品的 一系列...  -->
 			
@@ -83,12 +74,12 @@
             <h:form>
                 <table>
                     <tr>
-                        <td>name</td>
+                        <td>item name</td>
                         <td><h:inputText value="#{itemManager.newItem.name}"/></td>
                     </tr>
  
                     <tr>
-                        <td>code</td>
+                        <td>note:</td>
                         <td><h:inputText value="#{itemManager.newItem.code}"/></td>
                     </tr>
                     <tr>
@@ -97,8 +88,10 @@
                     </tr>
 
                      <tr>
-                        <td>category_id</td>
-                        <td><h:inputText value="#{itemManager.newItem.category}"/></td>
+                        <td>category_name</td>
+                        <td><h:inputText value="#{itemManager.newItem.category.name}" id="category_name"/>
+                        			<f:converter converterId="myCategoryConverter" for="category_name"/>
+                        </td>
                     </tr> 
                      <tr>
                         <td>status</td>

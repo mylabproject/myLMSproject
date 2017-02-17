@@ -41,4 +41,3 @@ public class ItemFacade extends AbstractFacade<Item> {
     }
 
 }
-
