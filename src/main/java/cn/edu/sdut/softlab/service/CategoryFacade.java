@@ -39,8 +39,23 @@ public class CategoryFacade extends AbstractFacade<Category> {
 		parameters.put("name", name);
 		return findSingleByNamedQuery("Category.findByName", parameters, Category.class).get();
 	}
-	
-	public List<Category> findAllCategory(){
+
+	public Category findById(int id) {
+		Map<String, Object> parameters = new HashMap<>(0);
+		parameters.put("id", id);
+		return findSingleByNamedQuery("Category.findById", parameters, Category.class).get();
+	}
+
+	/*
+	 * 查找指定 category,服务于 converter
+	 */
+	public Category findSpecifiedCategoryByName(String name) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("name", name);
+		return findSingleByNamedQuery("Category.findByName", parameters, Category.class).get();
+	}
+
+	public List<Category> findAllCategory() {
 		return findAll();
 	}
 

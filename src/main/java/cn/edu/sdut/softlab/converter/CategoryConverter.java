@@ -32,18 +32,27 @@ public class CategoryConverter implements Converter, Serializable {
 	FacesContext fc;
 
 	/**
-	 * @param name (String)
+	 * @param name
+	 *            (String)
 	 * @return Object
 	 * 
 	 *         传入一个 category_name ，根据name查找返回一个 category 对象，
 	 */
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String name) {
+
+		if (!name.equals("") && name != null) {
+
+			Category category = categoryservice.findSpecifiedCategoryByName(name);
+
+			return category;
+		}
+
 		if (name != null) {
 
 			Category category = categoryservice.findByName(name);
 
-			return category;
+			return category.getName();
 		}
 
 		return null;
@@ -56,10 +65,11 @@ public class CategoryConverter implements Converter, Serializable {
 	 */
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object obj) {
-		/*return String.valueOf(((Category) obj)); 	不行  = =   why*/
-		
+		/* return String.valueOf(((Category) obj)); 不行 = = why */
+
 		if (obj instanceof Category)
-			return String.valueOf(((Category) obj));//调用的 Category.toString() ??!!
+			return String.valueOf(((Category) obj));// 调用的 Category.toString()
+													// ??!!
 		else {
 			return null;
 		}

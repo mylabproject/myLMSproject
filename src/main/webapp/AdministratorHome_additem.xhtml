@@ -103,14 +103,18 @@
 									<f:selectItems value="#{itemManager.categories}" var="category"
 										itemLabel="#{Category.name}" itemValue="#{Category.name}" />
 									<h:column>
-												 #{c.name} -  #{c.id}                  					
+												 #{c.name}                  					
                       					</h:column>
 								</h:selectOneMenu></td>
 						</tr>
-						<tr>
+
+
+
+						<!--  状态 调整到后台自行判断,不需要用户自行输入。 -->
+						<!-- 						<tr>
 							<td>status</td>
 							<td><h:inputText value="#{itemManager.newItem.status}" /></td>
-						</tr>
+						</tr> -->
 
 						<tr>
 							<td></td>

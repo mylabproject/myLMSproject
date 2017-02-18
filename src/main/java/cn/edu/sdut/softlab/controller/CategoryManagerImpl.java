@@ -62,6 +62,7 @@ public class CategoryManagerImpl implements CategoryManager {
 		try {
 			utx.begin();
 			
+			//
 			CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
 			cq.select(cq.from(Category.class));
 			
@@ -83,5 +84,8 @@ public class CategoryManagerImpl implements CategoryManager {
 			utx.commit();
 		}
 	}
+	
+
+	
 
 }
