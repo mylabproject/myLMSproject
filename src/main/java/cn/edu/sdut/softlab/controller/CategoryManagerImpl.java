@@ -13,6 +13,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.UserTransaction;
 
 import cn.edu.sdut.softlab.model.Category;
@@ -28,6 +30,9 @@ import cn.edu.sdut.softlab.service.CategoryFacade;
 public class CategoryManagerImpl implements CategoryManager {
 
 
+	@Inject
+	private EntityManager em;
+	
 	@Inject
 	private transient Logger logger;
 	@Inject
@@ -48,6 +53,7 @@ public class CategoryManagerImpl implements CategoryManager {
 		this.newCategory = newCategory;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	@Produces
 	@Named
@@ -55,12 +61,17 @@ public class CategoryManagerImpl implements CategoryManager {
 	public List<Category> getCategories() throws Exception {
 		try {
 			utx.begin();
-			return categoryService.findAll();
+			
+			CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+			cq.select(cq.from(Category.class));
+			
+			return em.createQuery(cq).getResultList();
 		} finally {
 			utx.commit();
 		}
 	}
 
+	
 	@Override
 	public String addCategory() throws Exception {
 		try {

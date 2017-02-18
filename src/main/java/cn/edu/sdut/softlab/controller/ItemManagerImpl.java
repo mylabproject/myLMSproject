@@ -1,6 +1,8 @@
 package cn.edu.sdut.softlab.controller;
 
+import cn.edu.sdut.softlab.model.Category;
 import cn.edu.sdut.softlab.model.Item;
+import cn.edu.sdut.softlab.service.CategoryFacade;
 import cn.edu.sdut.softlab.service.ItemFacade;
 
 import java.util.List;
@@ -29,6 +31,10 @@ public class ItemManagerImpl implements ItemManager {
 	ItemFacade itemService;
 
 	@Inject
+	CategoryFacade categoryService;
+	
+	
+	@Inject
 	private UserTransaction utx;
 
 	@Inject
@@ -36,6 +42,21 @@ public class ItemManagerImpl implements ItemManager {
 	
 	@Inject
 	Credentials credentials;
+	
+	
+	
+	@RequestScoped
+	private List<Category> categories; 
+	
+	public List<Category> getCategories() {
+		return categoryService.findAllCategory();
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+	private Category selectedCategory;
 	
 	private int temporNum;
 
@@ -234,5 +255,19 @@ public class ItemManagerImpl implements ItemManager {
 			return "error.xthml?faces-redirect=true";
 		}
 }
+
+	/**
+	 * @return the selectedCategory
+	 */
+	public Category getSelectedCategory() {
+		return selectedCategory;
+	}
+
+	/**
+	 * @param selectedCategory the selectedCategory to set
+	 */
+	public void setSelectedCategory(Category selectedCategory) {
+		this.selectedCategory = selectedCategory;
+	}
 }	
 	

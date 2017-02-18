@@ -20,7 +20,7 @@ import cn.edu.sdut.softlab.service.CategoryFacade;
  *
  */
 @ManagedBean(name = "myCategoryConverter")
-@FacesConverter(forClass = Category.class, value = "categoryConverter")
+@FacesConverter(forClass = Category.class, value = "myCategoryConverter")
 public class CategoryConverter implements Converter, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -56,10 +56,13 @@ public class CategoryConverter implements Converter, Serializable {
 	 */
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object obj) {
+		/*return String.valueOf(((Category) obj)); 	不行  = =   why*/
 		
-		Category cg = (Category) obj;
-		
-		return cg.getName();
+		if (obj instanceof Category)
+			return String.valueOf(((Category) obj));//调用的 Category.toString() ??!!
+		else {
+			return null;
+		}
 	}
 
 }
