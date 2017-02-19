@@ -43,17 +43,18 @@ public class CategoryConverter implements Converter, Serializable {
 
 		if (!name.equals("") && name != null) {
 
+			//
 			Category category = categoryservice.findSpecifiedCategoryByName(name);
 
 			return category;
 		}
 
-		if (name != null) {
+/*		if (name != null) {
 
 			Category category = categoryservice.findByName(name);
 
 			return category.getName();
-		}
+		}*/
 
 		return null;
 	}
@@ -68,7 +69,9 @@ public class CategoryConverter implements Converter, Serializable {
 		/* return String.valueOf(((Category) obj)); 不行 = = why */
 
 		if (obj instanceof Category)
-			return String.valueOf(((Category) obj));// 调用的 Category.toString()
+			
+			return ((Category) obj).getName()+"hahaha";
+			//return String.valueOf(((Category) obj));// 调用的 Category.toString()
 													// ??!!
 		else {
 			return null;

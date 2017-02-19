@@ -96,7 +96,7 @@ public class Category implements Serializable {
   @Override
   public String toString() {
 //    return "cn.edu.sdut.softlab.model.Category[ id=" + id + " ]";
-	  return  id + " - " + name;
+	  return name;
   }
   
 }
