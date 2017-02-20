@@ -87,6 +87,13 @@
 							<td>note:</td>
 							<td><h:inputText value="#{itemManager.newItem.code}" /></td>
 						</tr>
+
+<!--  不用自己输入了	<tr>
+							<td>dateBought</td>
+							<td><p:calendar value="#{itemManager.newItem.dateBought}" /></td>
+						</tr> -->
+
+
 						<tr>
 							<td>num_total</td>
 							<td><h:inputText value="#{itemManager.newItem.numTotal}" /></td>
@@ -94,7 +101,8 @@
 
 						<tr>
 							<td>category_name</td>
-							<td><h:selectOneMenu value="#{itemManager.newItem.category.name}"
+							<td><h:selectOneMenu
+									value="#{itemManager.newItem.category.name}"
 									converter="myCategoryConverter" var="c">
 									<!-- 此处的 selectItem 是一个标签。用于文本显示。注意 -->
 									<f:selectItem itemLabel="Select One" itemValue="" />
@@ -102,7 +110,7 @@
 									<!-- 绑定 List<Category> -->
 									<f:selectItems value="#{itemManager.categories}" var="category"
 										itemLabel="#{Category.name}" itemValue="#{Category.name}" />
-<!-- 									<h:column>
+									<!-- 									<h:column>
 												 #{c}                  					
                       					</h:column> -->
 								</h:selectOneMenu></td>

@@ -21,6 +21,7 @@ package cn.edu.sdut.softlab.service;
 import cn.edu.sdut.softlab.model.Item;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
@@ -39,5 +40,9 @@ public class ItemFacade extends AbstractFacade<Item> {
         parameters.put("name", name);
         return findSingleByNamedQuery("Item.findByName", parameters, Item.class).get();
     }
+	
+    public List<Item> findAllItem() {
+		return findAll();
+	}
 
 }
