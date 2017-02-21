@@ -112,5 +112,19 @@ public class SearchFacade {
 		query.setParameter(1, "%" + name + "%");
 		return query.getResultList();
 	}
+	
+
+	public Item singleFuzzySearch(String name) {
+
+		String queryString = "SELECT i FROM Item i WHERE i.name LIKE :param";
+		Query query = em.createQuery(queryString);
+
+		query.setParameter("param", "'%"+name+"%'");
+		return (Item) query.getSingleResult();
+	}
+	
+	
 
 }
+
+
