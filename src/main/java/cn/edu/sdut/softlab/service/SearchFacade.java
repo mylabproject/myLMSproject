@@ -15,8 +15,9 @@ import cn.edu.sdut.softlab.model.Item;
  *
  */
 public class SearchFacade {
-	@Inject
-	EntityManager em;
+
+	 @Inject EntityManager em;
+
 	/*
 	 * 参考 ：
 	 * 
@@ -94,16 +95,22 @@ public class SearchFacade {
 	 * query.setParameter(1, name); return query.getResultList(); }
 	 */
 
+	
+	/**
+	 * 
+	 * 不容易，，注意两点。 通配符(%)的位置，位置变量(?)的参数 
+	 * 
+	 * @param name
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Item> fuzzySearch(String name) {
 
-		String queryString = "SELECT i FROM Item i WHERE i.name LIKE :param";
+		String queryString = "SELECT i FROM Item i WHERE i.name LIKE ?";
 		Query query = em.createQuery(queryString);
 
-		query.setParameter("param", "'%" + name + "%'");
+		query.setParameter(1, "%" + name + "%");
 		return query.getResultList();
 	}
 
 }
-
-
