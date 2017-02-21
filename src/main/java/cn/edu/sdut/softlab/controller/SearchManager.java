@@ -13,7 +13,7 @@ import cn.edu.sdut.softlab.service.SearchFacade;
 import java.util.List;
 
 import javax.enterprise.context.Dependent;
-import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author gaoyisheng
@@ -21,14 +21,14 @@ import javax.faces.bean.ManagedBean;
  */
 @Named("SearchManager")
 @Dependent
-@ManagedBean()
+@SessionScoped
 public class SearchManager {
 	
 	@Inject
 	EntityManager em;
 	
 	//bukeyi = =
-	private Item newItem = new Item();
+/*	private Item newItem = new Item();
 		
 	public Item getNewItem() {
 		return newItem;
@@ -37,22 +37,32 @@ public class SearchManager {
 	public void setNewItem(Item newItem) {
 		this.newItem = newItem;
 	}
+	*/
 
+	//作为中间变量的存在。类似Credentials
+	@Inject
+	Tempor tem;
 	
+	public Tempor getTem() {
+		return tem;
+	}
+
+	public void setTem(Tempor tem) {
+		this.tem = tem;
+	}
+
+
 	@Inject
 	SearchFacade searchService;
-
-	
-	//TTTOOO DDDOOO
 	
 	
 	public List<Item> getItemsSearchDT(){
-		String i = newItem.getName();
+		String i = tem.getName();
 		
 		if (i == null || i.equals("")){
 			return searchService.allDT();
 		}
-		return searchService.simpleSearch(i);
+		return searchService.fuzzySearch(i);
 	}
 	
 	/*
