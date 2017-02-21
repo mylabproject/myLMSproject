@@ -6,6 +6,8 @@ package cn.edu.sdut.softlab.service;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import cn.edu.sdut.softlab.model.Item;
 
 /**
@@ -24,14 +26,14 @@ public class SearchFacade {
 	}
 	*/
 	
-    @SuppressWarnings("unchecked")
+/*    @SuppressWarnings("unchecked")
 	public List<Item> simpleSearch(String name) {
     	
     	return em.createQuery("SELECT i FROM Item i " + 
     								"WHERE i.name LIKE '%?1%' ")
     			.setParameter(1, name)
     			.getResultList();
-    }
+    }*/
     
 	@SuppressWarnings("unchecked")
 	public List<Item> allDT() {
@@ -40,7 +42,6 @@ public class SearchFacade {
     			.getResultList();
     }
     
-    /*
      
     @SuppressWarnings("unchecked")
     public List<Item> simpleSearch(String name) {
@@ -53,6 +54,5 @@ public class SearchFacade {
         return query.getResultList();
     }
     
-    */
     
 }

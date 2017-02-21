@@ -13,20 +13,21 @@ import cn.edu.sdut.softlab.service.SearchFacade;
 import java.util.List;
 
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedBean;
 
 /**
  * @author gaoyisheng
- * 总是在itemManager,userManager中很不方便
- *	可能会用不到，先创建起来吧
  *
  */
 @Named("SearchManager")
 @Dependent
+@ManagedBean()
 public class SearchManager {
 	
 	@Inject
 	EntityManager em;
 	
+	//bukeyi = =
 	private Item newItem = new Item();
 		
 	public Item getNewItem() {
@@ -43,6 +44,7 @@ public class SearchManager {
 
 	
 	//TTTOOO DDDOOO
+	
 	
 	public List<Item> getItemsSearchDT(){
 		String i = newItem.getName();
