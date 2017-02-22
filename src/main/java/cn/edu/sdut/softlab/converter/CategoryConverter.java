@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
@@ -39,14 +40,14 @@ public class CategoryConverter implements Converter, Serializable {
 	 *         传入一个 category_name ，根据name查找返回一个 category 对象，
 	 */
 	@Override
-	public Object getAsObject(FacesContext arg0, UIComponent arg1, String name) {
+	public Object getAsObject(FacesContext arg0, UIComponent arg1, String name) throws ConverterException{
 
 		if (!name.equals("") && name != null) {
 
-			//
+			//根据名字查找到对象
 			Category category = categoryservice.findSpecifiedCategoryByName(name);
-
-			return category;
+			
+			return category.getId();
 		}
 
 /*		if (name != null) {
@@ -70,7 +71,7 @@ public class CategoryConverter implements Converter, Serializable {
 
 		if (obj instanceof Category)
 			
-			return ((Category) obj).getName()+"hahaha";
+			return ((Category) obj).getName();
 			//return String.valueOf(((Category) obj));// 调用的 Category.toString()
 													// ??!!
 		else {

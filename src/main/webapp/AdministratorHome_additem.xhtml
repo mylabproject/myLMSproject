@@ -102,14 +102,14 @@
 						<tr>
 							<td>category_name</td>
 							<td><h:selectOneMenu
-									value="#{itemManager.newItem.category.name}"
+									value="#{itemManager.newItem.category.id}"
 									converter="myCategoryConverter" var="c">
 									<!-- 此处的 selectItem 是一个标签。用于文本显示。注意 -->
-									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Select One" />
 
 									<!-- 绑定 List<Category> -->
-									<f:selectItems value="#{itemManager.categories}" var="category"
-										itemLabel="#{Category.name}" itemValue="#{Category.name}" />
+									<f:selectItems value="#{itemManager.categories}" var="Category"
+										itemLabel="#{Category.name}" itemValue="#{Category.id}" />
 									<!-- 									<h:column>
 												 #{c}                  					
                       					</h:column> -->
