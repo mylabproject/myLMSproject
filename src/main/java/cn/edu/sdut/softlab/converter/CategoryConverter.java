@@ -47,7 +47,7 @@ public class CategoryConverter implements Converter, Serializable {
 			//根据名字查找到对象
 			Category category = categoryservice.findSpecifiedCategoryByName(name);
 			
-			return category.getId();
+			return category;
 		}
 
 /*		if (name != null) {
@@ -71,7 +71,7 @@ public class CategoryConverter implements Converter, Serializable {
 
 		if (obj instanceof Category)
 			
-			return ((Category) obj).getName();
+			return ((Category) obj).getName()+"2";
 			//return String.valueOf(((Category) obj));// 调用的 Category.toString()
 													// ??!!
 		else {

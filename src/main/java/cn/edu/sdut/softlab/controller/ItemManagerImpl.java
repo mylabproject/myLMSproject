@@ -220,7 +220,7 @@ public class ItemManagerImpl implements ItemManager {
 
 								//如果一前都借空了，现在还上了，status 置为 ture. 
 								if (currentItem.getStatus().equals("false")) {
-									currentItem.setStatus("ture");
+									currentItem.setStatus("true");
 								} 
 			
 				

@@ -6,6 +6,11 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 
 <h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Welcome to Administrator-HomePage !</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/homestyle.css"></link>
+
+
 	<style>
 .city {
 	float: center;
@@ -18,16 +23,13 @@
 }
 </style>
 </h:head>
+
 <body>
 	<center>
 		<div id="wapper">
 			<div id="header">
 				<div id="logo">此处为logo</div>
-				<div id="topmenu">网站顶部导航
-				
-			<h:link href="./AdministratorHome_itemout.jsf" value="item out"/>
-				
-				</div>
+				<div id="topmenu">网站顶部导航</div>
 			</div>
 
 			<div id="centent">
@@ -79,44 +81,130 @@
 
 
 
-				<div id="centercentent">网站主题内容</div>
-				选择地址：<select name="address" size="1">
-					<option value="shanghai">上海</option>
-					<option selected="selected" value="beijing">北京</option>
-					<option value="shandong">山东</option>
-				</select>
+				<div id="centercentent">
+					网站主题内容
 
+					<h:form>
+						<table>
+							<tr>
+								<td><h:link href="./AdministratorHome_itemout.jsf"
+										value="go item out" /></td>
+							</tr>
+							<tr>
+								<td><h:commandLink label="commandLink_action = > item OUt"
+										action="./AdministratorHome_itemout.jsf" /></td>
+							</tr>
 
-				<!-- 物品入库...  -->
-
-				<h:message />
-
-				<h1>Item in:</h1>
-				<h:form>
-					<table>
-						<tr>
-							<td>name</td>
-							<td><h:inputText value="#{itemManager.newItem.name}" /></td>
-						</tr>
-
-						<tr>
-							<td>num:</td>
-							<td><h:inputText value="#{itemManager.temporNum}" /></td>
-						</tr>
-
-						<tr>
-							<td></td>
-							<td><h:commandButton action="#{itemManager.itemIn}"
-									value="Item In" /></td>
-						</tr>
-					</table>
-				</h:form>
+							<tr>
+								<td><h:commandButton label="Login" action="welcome" /></td>
+							</tr>
+							<tr>
+								<td><h:commandButton
+										action="./AdministratorHome_itemout.jsf" value="go item OUT" />
+								</td>
+							</tr>
+						</table>
+					</h:form>
 
 
 
+					选择地址：<select name="address" size="1">
+						<option value="shanghai">上海</option>
+						<option selected="selected" value="beijing">北京</option>
+						<option value="shandong">山东</option>
+					</select>
 
 
+					<!-- 物品入库...  -->
 
+					<h:message />
+
+					<h1>Item in:</h1>
+					<h:form>
+						<table>
+							<tr>
+								<td>name</td>
+								<td><h:inputText value="#{itemManager.newItem.name}" /></td>
+							</tr>
+
+							<tr>
+								<td>num:</td>
+								<td><h:inputText value="#{itemManager.temporNum}" /></td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td><h:commandButton action="#{itemManager.itemIn}"
+										value="Item In" /></td>
+							</tr>
+						</table>
+					</h:form>
+
+					<h:form>
+						<p:dataTable var="i" value="#{items}">
+							<f:facet name="header">
+									List of Items
+							</f:facet>
+							<p:column>
+								<f:facet name="header">
+									name
+								</f:facet>
+									#{i.name}
+								<f:facet name="footer">
+									 footer 
+								</f:facet>
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									code
+								</f:facet>
+									#{i.code}
+								<f:facet name="footer">
+									 footer  ll
+								</f:facet>
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									dateBought
+								</f:facet>
+									#{i.dateBought}
+								<f:facet name="footer">
+									 footer  ll
+								</f:facet>
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									numTotal
+								</f:facet>
+									#{i.numTotal}
+								<f:facet name="footer">
+									   ll
+								</f:facet>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									category name
+								</f:facet>
+									#{i.category.name}
+								<f:facet name="footer">
+									   ll
+								</f:facet>
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									status
+								</f:facet>
+									#{i.status}
+								<f:facet name="footer">
+									 footer
+								</f:facet>
+							</p:column>
+
+						</p:dataTable>
+					</h:form>
+
+					<!-- 
 				<div class="city">
 				<h:message/>
 					<h1>Items:</h1>
@@ -138,7 +226,7 @@
 							<f:facet name="header">
                         dateBought
                     </f:facet>
-							<p:calendar value="#{var_item.dateBought}" />
+							<h:outputText value="#{var_item.dateBought}" />
 						</h:column>
 
 						<h:column>
@@ -163,10 +251,10 @@
 
 					</h:dataTable>
 				</div>
+ -->
 
 
-
-
+				</div>
 				<!-- 	<div id="rightsider">网站右边导航栏</div> -->
 			</div>
 			<div id="footer">

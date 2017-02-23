@@ -133,11 +133,11 @@ public class Item implements Serializable {
   }
 
   public Date getDateBought() {
-    return new Date(dateBought.getTime());
+    return dateBought;
   }
 
   public void setDateBought(Date dateBought) {
-    this.dateBought = new Date(dateBought.getTime());
+    this.dateBought = dateBought;
   }
 
   public Category getCategory() {
