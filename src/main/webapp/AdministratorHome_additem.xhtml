@@ -88,10 +88,7 @@
 							<td><h:inputText value="#{itemManager.newItem.code}" /></td>
 						</tr>
 
-<!--  不用自己输入了	<tr>
-							<td>dateBought</td>
-							<td><p:calendar value="#{itemManager.newItem.dateBought}" /></td>
-						</tr> -->
+
 
 
 						<tr>
@@ -102,14 +99,18 @@
 						<tr>
 							<td>category_name</td>
 							<td><h:selectOneMenu
-									value="#{itemManager.newItem.category}"
+									value="#{itemManager.newItem.category.name}"
 									converter="myCategoryConverter" var="c">
 									<!-- 此处的 selectItem 是一个标签。用于文本显示。注意 -->
 									<f:selectItem itemLabel="Select One" />
 
-									<!-- 绑定 List<Category> -->
+									<!-- 绑定 List<Category> -->  <!--  book1说明可以获取到数据 了，
+									
+																			equals()  hashCode()也重写了，
+																			
+																			converter还有傻冒并 .煤气作用？ -->
 									<f:selectItems value="#{itemManager.categories}" var="Category"
-										itemLabel="#{Category.name}" itemValue="#{Category.id}" />
+										itemLabel="#{Category.name}" itemValue="#{Category.name}" />
 									<!-- 									<h:column>
 												 #{c}                  					
                       					</h:column> -->
@@ -118,11 +119,7 @@
 
 
 
-						<!--  状态 调整到后台自行判断,不需要用户自行输入。 -->
-						<!-- 						<tr>
-							<td>status</td>
-							<td><h:inputText value="#{itemManager.newItem.status}" /></td>
-						</tr> -->
+
 
 						<tr>
 							<td></td>
@@ -137,7 +134,7 @@
 
 
 
-
+<h:form>
 				<h1>Items:</h1>
 				<h:dataTable value="#{items}" var="var_item">
 					<h:column>
@@ -181,7 +178,7 @@
 					</h:column>
 
 				</h:dataTable>
-
+</h:form>
 
 
 

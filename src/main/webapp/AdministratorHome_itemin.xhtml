@@ -87,32 +87,26 @@
 					<h:form>
 						<table>
 							<tr>
-								<td><h:link href="./AdministratorHome_itemout.jsf"
+								<td><h:link href="./AdministratorHome_itemout.jsf?faces-redirect=true"
 										value="go item out" /></td>
 							</tr>
 							<tr>
 								<td><h:commandLink label="commandLink_action = > item OUt"
-										action="./AdministratorHome_itemout.jsf" /></td>
+										action="./AdministratorHome_itemout.xhtml?faces-redirect=true" /></td>
 							</tr>
 
 							<tr>
-								<td><h:commandButton label="Login" action="welcome" /></td>
+								<td><h:commandButton label="commandLink_action = > item OUt" action="./AdministratorHome_itemout.jsf?faces-redirect=true" /></td>
 							</tr>
 							<tr>
 								<td><h:commandButton
-										action="./AdministratorHome_itemout.jsf" value="go item OUT" />
+										action="./AdministratorHome_itemout.xhtml?faces-redirect=true" value="go item OUT xhtml" />
 								</td>
 							</tr>
 						</table>
 					</h:form>
 
 
-
-					选择地址：<select name="address" size="1">
-						<option value="shanghai">上海</option>
-						<option selected="selected" value="beijing">北京</option>
-						<option value="shandong">山东</option>
-					</select>
 
 
 					<!-- 物品入库...  -->
@@ -139,6 +133,14 @@
 							</tr>
 						</table>
 					</h:form>
+
+
+
+
+
+
+<!-- 为什么 加了form 还是不行！！！～？？？？？？？？ -->
+
 
 					<h:form>
 						<p:dataTable var="i" value="#{items}">
@@ -204,8 +206,8 @@
 						</p:dataTable>
 					</h:form>
 
-					<!-- 
-				<div class="city">
+					
+	<!-- 这个可以为什么 用 p: 就不行 ==  -->			
 				<h:message/>
 					<h1>Items:</h1>
 					<h:dataTable value="#{items}" var="var_item">
@@ -250,8 +252,8 @@
 						</h:column>
 
 					</h:dataTable>
-				</div>
- -->
+			
+
 
 
 				</div>
