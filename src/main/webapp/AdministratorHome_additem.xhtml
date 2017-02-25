@@ -12,7 +12,7 @@
 </h:head>
 
 <!-- <ui:define name="content"> -->
-<body>
+<h:body>
 	<center>
 		<div id="wapper">
 			<div id="header">
@@ -80,7 +80,10 @@
 					<table>
 						<tr>
 							<td>item name</td>
-							<td><h:inputText value="#{itemManager.newItem.name}" /></td>
+							<td><h:inputText value="#{itemManager.newItem.name}" >
+									<f:validator validatorId="AddItemValidator"/>
+								</h:inputText>
+							</td>
 						</tr>
 
 						<tr>
@@ -191,7 +194,7 @@
 			</div>
 		</div>
 	</center>
-</body>
+</h:body>
 
 <!-- 
 </ui:define> -->

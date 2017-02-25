@@ -26,7 +26,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -67,10 +66,13 @@ public class StuffManagerImpl implements StuffManager {
 		this.newStuff = newStuff;
 	}
 
-	@Override
+/*	@Override
 	@Produces
 	@Named
 	@RequestScoped
+	
+	*	老师说 方法() 没有生命周期 = =
+	*/
 	public List<Stuff> getStuffs() throws Exception {
 		try {
 			utx.begin();

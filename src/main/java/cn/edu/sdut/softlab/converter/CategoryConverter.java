@@ -71,7 +71,7 @@ public class CategoryConverter implements Converter, Serializable {
 
 		if (obj instanceof Category)
 			
-			return ((Category) obj).getName()+"2";
+			return ((Category) obj).getName();
 			//return String.valueOf(((Category) obj));// 调用的 Category.toString()
 													// ??!!
 		else {

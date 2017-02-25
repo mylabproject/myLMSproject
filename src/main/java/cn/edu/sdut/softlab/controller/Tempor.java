@@ -17,6 +17,8 @@ import javax.inject.Named;
 public class Tempor {
 
 	/// 作为 查询的 中间变量
+	
+	//之后添加其他字段的属性
 
 	private String name;
 	private String word;

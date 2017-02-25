@@ -24,7 +24,7 @@
 </style>
 </h:head>
 
-<body>
+<h:body>
 	<center>
 		<div id="wapper">
 			<div id="header">
@@ -134,14 +134,9 @@
 						</table>
 					</h:form>
 
-
-
-
-
-
 <!-- 为什么 加了form 还是不行！！！～？？？？？？？？ -->
-
-
+<!-- 加上ui define 试试 -->
+			<ui:define>
 					<h:form>
 						<p:dataTable var="i" value="#{items}">
 							<f:facet name="header">
@@ -205,7 +200,7 @@
 
 						</p:dataTable>
 					</h:form>
-
+				</ui:define>
 					
 	<!-- 这个可以为什么 用 p: 就不行 ==  -->			
 				<h:message/>
@@ -250,11 +245,7 @@
                     </f:facet>
 							<h:outputText value="#{var_item.status}" />
 						</h:column>
-
 					</h:dataTable>
-			
-
-
 
 				</div>
 				<!-- 	<div id="rightsider">网站右边导航栏</div> -->
@@ -265,5 +256,5 @@
 			</div>
 		</div>
 	</center>
-</body>
+</h:body>
 </html>
