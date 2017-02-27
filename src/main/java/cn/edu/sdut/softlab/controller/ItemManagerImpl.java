@@ -98,6 +98,7 @@ public class ItemManagerImpl implements ItemManager {
 		}
 	}
 
+	//addItem Button 单击事件
 	@Override
 	public String addItem() throws Exception {
 		try {

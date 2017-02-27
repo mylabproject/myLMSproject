@@ -44,10 +44,15 @@ public class CategoryConverter implements Converter, Serializable {
 
 		if (!name.equals("") && name != null) {
 
-			//根据名字查找到对象
-			Category category = categoryservice.findSpecifiedCategoryByName(name);
+			//根据名字查找到对象      不行 
+/*			Category category = categoryservice.findSpecifiedCategoryByName(name);
 			
-			return category;
+			return category.getName();*/
+			
+			//法二,直接
+			return categoryservice.findSpecifiedCategoryByName(name).getId();
+			
+			
 		}
 
 /*		if (name != null) {
