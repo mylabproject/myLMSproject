@@ -20,6 +20,9 @@ package cn.edu.sdut.softlab.service;
 
 import cn.edu.sdut.softlab.model.ItemAccount;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
@@ -30,5 +33,11 @@ public class ItemAccountFacade extends AbstractFacade<ItemAccount> {
 	public ItemAccountFacade() {
 		super(ItemAccount.class);
 	}
+	
+    public ItemAccount findById(int id) {
+        Map<String, Object> parameters = new HashMap<>(0);
+        parameters.put("id", id);
+        return findSingleByNamedQuery("ItemAccount.findById", parameters, ItemAccount.class).get();
+    }
 
 }
