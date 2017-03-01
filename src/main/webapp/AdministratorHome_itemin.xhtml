@@ -28,14 +28,14 @@
 	<center>
 		<div id="wapper">
 			<div id="header">
-				<div id="logo">此处为logo</div>
+				<div id="logo" >此处为logo</div>
 				<div id="topmenu">网站顶部导航</div>
 			</div>
 
 			<div id="centent">
-				<div id="leftmenu">
+				<div id="leftmenu" >
 					网站左边导航栏
-
+					
 					<table>
 						<tr>
 							<td></td>
@@ -86,21 +86,29 @@
 
 					<h:form>
 						<table>
+
 							<tr>
-								<td><h:link href="./AdministratorHome_itemout.jsf?faces-redirect=true"
+								<td><h:link href="./AdministratorHome_itemout.jsf"
 										value="go item out" /></td>
 							</tr>
 							<tr>
 								<td><h:commandLink label="commandLink_action = > item OUt"
-										action="./AdministratorHome_itemout.xhtml?faces-redirect=true" /></td>
+										action="./AdministratorHome_itemout.jsf" /></td>
 							</tr>
 
 							<tr>
-								<td><h:commandButton label="commandLink_action = > item OUt" action="./AdministratorHome_itemout.jsf?faces-redirect=true" /></td>
+								<td><h:commandButton
+										label="commandLink_action = > item OUt"
+										action="./AdministratorHome_itemout.jsf" /></td>
 							</tr>
 							<tr>
 								<td><h:commandButton
-										action="./AdministratorHome_itemout.xhtml?faces-redirect=true" value="go item OUT xhtml" />
+										action="./AdministratorHome_itemout.jsf"
+										value="go item OUT xhtml" /></td>
+							</tr>
+							<tr>
+								<td><a href="./AdministratorHome_itemout.jsf">item OUT</a>
+
 								</td>
 							</tr>
 						</table>
@@ -134,76 +142,77 @@
 						</table>
 					</h:form>
 
-<!-- 为什么 加了form 还是不行！！！～？？？？？？？？ -->
-<!-- 加上ui define 试试 -->
-			<ui:define name="content">
-					<h:form>
-						<p:dataTable var="i" value="#{items}">
-							<f:facet name="header">
+					<!-- 为什么 加了form 还是不行！！！～？？？？？？？？ -->
+					<!-- 加上ui define 试试 -->
+					<!-- 还是不行 -->
+					<ui:define name="content">
+						<h:form>
+							<p:dataTable var="i" value="#{items}">
+								<f:facet name="header">
 									List of Items
 							</f:facet>
-							<p:column>
-								<f:facet name="header">
+								<p:column>
+									<f:facet name="header">
 									name
 								</f:facet>
 									#{i.name}
 								<f:facet name="footer">
 									 footer 
 								</f:facet>
-							</p:column>
-							<p:column>
-								<f:facet name="header">
+								</p:column>
+								<p:column>
+									<f:facet name="header">
 									code
 								</f:facet>
 									#{i.code}
 								<f:facet name="footer">
 									 footer  ll
 								</f:facet>
-							</p:column>
-							<p:column>
-								<f:facet name="header">
+								</p:column>
+								<p:column>
+									<f:facet name="header">
 									dateBought
 								</f:facet>
 									#{i.dateBought}
 								<f:facet name="footer">
 									 footer  ll
 								</f:facet>
-							</p:column>
-							<p:column>
-								<f:facet name="header">
+								</p:column>
+								<p:column>
+									<f:facet name="header">
 									numTotal
 								</f:facet>
 									#{i.numTotal}
 								<f:facet name="footer">
 									   ll
 								</f:facet>
-							</p:column>
+								</p:column>
 
-							<p:column>
-								<f:facet name="header">
+								<p:column>
+									<f:facet name="header">
 									category name
 								</f:facet>
 									#{i.category.name}
 								<f:facet name="footer">
 									   ll
 								</f:facet>
-							</p:column>
-							<p:column>
-								<f:facet name="header">
+								</p:column>
+								<p:column>
+									<f:facet name="header">
 									status
 								</f:facet>
 									#{i.status}
 								<f:facet name="footer">
 									 footer
 								</f:facet>
-							</p:column>
+								</p:column>
 
-						</p:dataTable>
-					</h:form>
-				</ui:define>
-					
-	<!-- 这个可以为什么 用 p: 就不行 ==  -->			
-				<h:message/>
+							</p:dataTable>
+						</h:form>
+					</ui:define>
+
+					<!-- 这个可以为什么 用 p: 就不行 ==  -->
+					<h:message />
 					<h1>Items:</h1>
 					<h:dataTable value="#{items}" var="var_item">
 						<h:column>
@@ -250,10 +259,10 @@
 				</div>
 				<!-- 	<div id="rightsider">网站右边导航栏</div> -->
 			</div>
-			<div id="footer">
+			<!--			<div id="footer">
 				Copyright(C)2014 morpheussoft All Rights Reserved<br />
 				morpheus网络科技有限公司 版权所有 京IP备38324号
-			</div>
+			</div> -->
 		</div>
 	</center>
 </h:body>

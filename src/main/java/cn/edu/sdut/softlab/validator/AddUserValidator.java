@@ -56,22 +56,21 @@ public class AddUserValidator implements Validator {
 		
 		
 		//法2
-		else {
+/*		else {
 			if (userservice.findByName((String) value) != null) {
 				FacesMessage message = new FacesMessage("该用户名已存在！");
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
 				throw new ValidatorException(message);
-			}
+			}*/
 		
 		//法3
-		/*
-		 * else {
+		  else {
 				if (userservice.findByName((String) value).getClass() != null) {
 					FacesMessage message = new FacesMessage("该用户名已存在！");
 					message.setSeverity(FacesMessage.SEVERITY_ERROR);
 					throw new ValidatorException(message);
 				}		
-		*/
+
 			
 			
 			
