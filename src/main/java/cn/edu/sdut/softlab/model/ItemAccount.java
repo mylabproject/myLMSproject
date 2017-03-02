@@ -89,7 +89,7 @@ public class ItemAccount implements Serializable {
   }
 
   public void setTimeCheck(Date timeCheck) {
-    this.timeCheck = new Date(timeCheck.getTime());
+    this.timeCheck = timeCheck;
   }
 
   public String getFlag() {

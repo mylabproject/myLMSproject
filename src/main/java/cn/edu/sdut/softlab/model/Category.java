@@ -152,7 +152,6 @@ public class Category implements Serializable {
 
 		//几项检查都没问题 返回true
 		return true;
-
 	}
 
 	@Override

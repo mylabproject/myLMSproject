@@ -28,22 +28,28 @@
 	<center>
 		<div id="wapper">
 			<div id="header">
-				<div id="logo" >此处为logo</div>
+				<div id="logo">此处为logo</div>
 				<div id="topmenu">网站顶部导航</div>
 			</div>
+			
+			
+			
+
+
 
 			<div id="centent">
-				<div id="leftmenu" >
-					网站左边导航栏
-					
+			<div  id="leftmenu">
+			
 					<table>
 						<tr>
 							<td></td>
-							<td><h:commandButton value="Add User123" /></td>
+							<td><a
+							href="./AdministratorHome_adduser.jsf">Add user</a></td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><h:commandButton value="Add Item123" /></td>
+							<td><a
+							href="./AdministratorHome_additem.jsf">Add Item</a></td>
 						</tr>
 
 						<tr>
@@ -72,8 +78,38 @@
 						</tr>
 
 					</table>
+			</div>
+			
+			
+<!--  				<div  id="leftmenu">
+					网站左边导航栏
+					<ul style="margin: 10px;" class="topnav menu-left-nest">
 
-				</div>
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_additem.jsf">Add Item</a></li>
+
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_adduser.jsf">Add user</a></li>
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_deleteitem.jsf">Delete Item</a></li>
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_deleteuser.jsf">Delete User</a></li>
+
+
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_itemout.jsf">Item Out</a></li>
+
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_itemin.jsf">Item In</a></li>
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_searchitem.jsf">Search Item</a></li>
+
+						<li style="text-align: left;"><a
+							href="./AdministratorHome_reports.jsf">Reports</a></li>
+
+					</ul>
+
+				</div> -->
 
 
 
@@ -84,35 +120,6 @@
 				<div id="centercentent">
 					网站主题内容
 
-					<h:form>
-						<table>
-
-							<tr>
-								<td><h:link href="./AdministratorHome_itemout.jsf"
-										value="go item out" /></td>
-							</tr>
-							<tr>
-								<td><h:commandLink label="commandLink_action = > item OUt"
-										action="./AdministratorHome_itemout.jsf" /></td>
-							</tr>
-
-							<tr>
-								<td><h:commandButton
-										label="commandLink_action = > item OUt"
-										action="./AdministratorHome_itemout.jsf" /></td>
-							</tr>
-							<tr>
-								<td><h:commandButton
-										action="./AdministratorHome_itemout.jsf"
-										value="go item OUT xhtml" /></td>
-							</tr>
-							<tr>
-								<td><a href="./AdministratorHome_itemout.jsf">item OUT</a>
-
-								</td>
-							</tr>
-						</table>
-					</h:form>
 
 
 

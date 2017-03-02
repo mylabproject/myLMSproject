@@ -2,7 +2,7 @@ package cn.edu.sdut.softlab.controller;
 
 import cn.edu.sdut.softlab.model.Category;
 import cn.edu.sdut.softlab.model.Item;
-import cn.edu.sdut.softlab.model.ItemAccount;
+import cn.edu.sdut.softlab.model.Stuff;
 import cn.edu.sdut.softlab.service.CategoryFacade;
 import cn.edu.sdut.softlab.service.ItemAccountFacade;
 import cn.edu.sdut.softlab.service.ItemFacade;
@@ -207,17 +207,6 @@ public class ItemManagerImpl implements ItemManager {
 		// 检查 空， 后期提出到 check
 		if (currentItem != null) {
 
-			/*
-			 * // 暂时 设置为 1, n应为 绑定的参数。 int n = 1;
-			 */
-			// if ((currentItem.getNumTotal() - temporNum) >= 0) {
-
-			// 倘若都借出去了，将 状态 status 置为不可借: false
-			/*
-			 * if ((currentItem.getNumTotal() - temporNum) == 0) {
-			 * currentItem.setStatus("false"); }
-			 */
-
 			if (temporNum > 0) {
 				currentItem.setNumTotal(currentItem.getNumTotal() + temporNum);
 
@@ -226,32 +215,17 @@ public class ItemManagerImpl implements ItemManager {
 					currentItem.setStatus("true");
 				}
 
-				/*
-				 * //安全起见，再检查一遍 if (currentItem.getNumTotal() == 0) {
-				 * currentItem.setStatus("false"); }
-				 * 
-				 * ！@！没必要，先检查一遍 temporNum是否大于0
-				 */
-
-				/*
-				 * 在这里存储 itemaccount
-				 */
-
-				//ItemAccountManagerImpl iam = new ItemAccountManagerImpl("ture", newItem.getName(), "1");
-				
-				//ItemAccountManagerImpl iam = new ItemAccountManagerImpl("ture", "123", "1");
-				
-				//ItemAccount ia = iam.getNewIA();
-				//iaService.create(ia);
-				
 				ItemAccountManagerImpl iam= new ItemAccountManagerImpl();
-				iam.getNewIA().setFlag("ture");
+				iam.getNewIA().setItem(currentItem);
+				//iam.getNewIA().setItem(itemService.findByName("123"));
+				iam.getNewIA().setFlag("Item In");
 				//ERROR
 				//cn.edu.sdut.softlab.controller.ItemManagerImpl.itemIn(ItemManagerImpl.java:248)
 				//cn.edu.sdut.softlab.controller.ItemManagerImpl$Proxy$_$$_WeldSubclass.itemIn$$super(Unknown Source)
 				iam.getNewIA().setTimeCheck(new Date());;
-				iam.getNewIA().setItem(itemService.findByName("123"));
-				iam.getNewIA().setStuff(userService.findByName("1"));
+				
+				//Stuff u = userService.findByName("123");
+				iam.getNewIA().setStuff(userService.findByName("123"));
 				iaService.create(iam.getNewIA());			
 				//em.persist(iam);
 				
@@ -262,11 +236,7 @@ public class ItemManagerImpl implements ItemManager {
 
 				return "/AdministratorHome_itemin.xhtml?faces-redirect=true";
 
-				/*
-				 * } else {
-				 * 
-				 * return "/error.xhtml?faces-redirect=true"; // 不能借到负数吧。 }
-				 */
+
 			}
 
 			em.close();

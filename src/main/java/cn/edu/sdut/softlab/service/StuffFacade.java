@@ -36,7 +36,6 @@ public class StuffFacade extends AbstractFacade<Stuff> {
 
 	/**
 	 * 同findByUsernameAndPassword()理
-	 * 2017-02-14
 	 */
 	public Stuff findByName(String username) {
 		Map<String, Object> parameters = new HashMap<>(0);
@@ -46,8 +45,6 @@ public class StuffFacade extends AbstractFacade<Stuff> {
 	
 	/**
 	 * 同findByUsernameAndPassword()理
-	 * 2017-02-14
-	 * 
 	 * 
 	 * 以后 找回密码用：mail + pwd
 	 */
