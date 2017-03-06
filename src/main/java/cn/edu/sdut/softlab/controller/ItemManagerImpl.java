@@ -172,7 +172,15 @@ public class ItemManagerImpl implements ItemManager {
 				if ((currentItem.getNumTotal() - temporNum) == 0) {
 					currentItem.setStatus("false");
 				}
-
+				
+				//
+				ItemAccountManagerImpl iam= new ItemAccountManagerImpl();
+				iam.getNewIA().setItem(currentItem);
+				iam.getNewIA().setFlag("Item Out");
+				iam.getNewIA().setTimeCheck(new Date());;
+				iam.getNewIA().setStuff(userService.findByName("123"));
+				iaService.create(iam.getNewIA());			
+				
 				em.merge(currentItem);
 				utx.commit();
 

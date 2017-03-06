@@ -11,7 +11,7 @@ import javax.inject.Named;
  * @author gaoyisheng
  *
  */
-@RequestScoped
+@RequestScoped	//因为只作为中间变量传值，所以Request
 @Named
 @Default
 public class Tempor {

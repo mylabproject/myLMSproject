@@ -7,13 +7,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
+import org.primefaces.component.datatable.DataTable;
+
 import cn.edu.sdut.softlab.model.Item;
 import cn.edu.sdut.softlab.service.SearchFacade;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.Dependent;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.Dependent;//
+import javax.faces.bean.ApplicationScoped;
 
 /**
  * @author gaoyisheng
@@ -21,9 +24,14 @@ import javax.faces.bean.SessionScoped;
  */
 @Named("SearchManager")
 @Dependent
-@SessionScoped
-public class SearchManager {
+@ApplicationScoped	//SessionScoped 得到的List<>无法sortBy  改为Faces.Bean.ApplScoped..(模仿primefaces)还是不行 = =               
+public class SearchManager implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Inject
 	EntityManager em;
 	
@@ -64,6 +72,11 @@ public class SearchManager {
 		}
 		return searchService.fuzzySearch(i);
 	}
+	
+	//1 模仿 primefaces 解决sortBy
+	//2 用DataTable解决?无法sortBy    
+	private DataTable dt= new DataTable(){};
+	
 	
 	/*
 	public List<Item> simpleSearch(String name) {

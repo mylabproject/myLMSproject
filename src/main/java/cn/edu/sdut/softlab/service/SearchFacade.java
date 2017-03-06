@@ -4,6 +4,8 @@
 package cn.edu.sdut.softlab.service;
 
 import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -14,6 +16,8 @@ import cn.edu.sdut.softlab.model.Item;
  * @author gaoyisheng
  *
  */
+//@RequestScoped 	//为了使searchManager得到的List<>可以sortBy 模仿PrimeFaces改写生命周期为ApplScoped
+@Stateless
 public class SearchFacade {
 
 	 @Inject EntityManager em;
