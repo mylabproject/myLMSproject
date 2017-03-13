@@ -75,11 +75,11 @@ public class SearchManager implements Serializable{
 	
 	//1 模仿 primefaces 解决sortBy
 	//2 用DataTable解决?无法sortBy    
-	private DataTable dt= new DataTable(){};
+	private DataTable dt= new DataTable();
 	
 	
 	/*
-	public List<Item> simpleSearch(String name) {
+	public List<Item> categorySearch(String name) {
     	
     	return em.createQuery("SELECT i FROM Item i " + 
     								"WHERE i.name LIKE '%?1%' ")
@@ -87,6 +87,16 @@ public class SearchManager implements Serializable{
     			.getResultList();
        
     }*/
+
+	//按类名查询
+	public List<Item> getSearchByCategoryNameDT(){
+		String i = tem.getCategoryName();
+		
+		if (i == null || i.equals("")){
+			return searchService.allDT();
+		}
+		return searchService.searchByCategoryName(i);
+	}
 	
 	
 }

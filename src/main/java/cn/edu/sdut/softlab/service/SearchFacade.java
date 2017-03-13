@@ -34,13 +34,6 @@ public class SearchFacade {
 
 		return em.createQuery("SELECT i FROM Item i ").getResultList();
 	}
-
-	/*
-	 * . 模糊查询
-	 * 
-	 * JPA动态查询 通配符 配合 变量
-	 */
-
 	
 	/**
 	 * 
@@ -69,7 +62,28 @@ public class SearchFacade {
 		return (Item) query.getSingleResult();
 	}
 	
+	//按分类名称查询：
+/*	@SuppressWarnings("unchecked")
+	public List<Item> categorySearch(String categoryName) {
+
+		String queryString = "SELECT i FROM Item i WHERE i.category.name LIKE ?";
+		Query query = em.createQuery(queryString);
+
+		query.setParameter(1, "%" + categoryName + "%");
+		return query.getResultList();
+	}*/
 	
+	//按分类名称查询：
+	@SuppressWarnings("unchecked")
+	public List<Item> searchByCategoryName(String categoryName) {
+    	
+    	return em.createQuery("SELECT i FROM Item i " + 
+    								"WHERE i.category.name LIKE ?")
+    			.setParameter(1, "%" + categoryName + "%")
+    			.getResultList();
+       
+    }
+
 
 }
 

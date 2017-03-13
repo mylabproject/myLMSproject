@@ -22,18 +22,44 @@ public class Tempor {
 
 	private String name;
 	private String word;
+	private String categoryName;
 	
-	public String getName() {
-		return name;
+
+	/**
+	 * @return the categoryName
+	 */
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * @param categoryName the categoryName to set
+	 */
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
+	/**
+	 * @return the word
+	 */
 	public String getWord() {
 		return word;
 	}
+	/**
+	 * @param word the word to set
+	 */
 	public void setWord(String word) {
 		this.word = word;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 
